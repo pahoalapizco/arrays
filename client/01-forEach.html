@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forEach</title>
+
+  <style>
+    #tasks li {
+      display: flex;
+      list-style: none;
+      align-content: center;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="tasks">
+    
+  </div>
+
+
+  <script>
+    const products = [
+      { name: 'Burger', price: 121 },
+      { name: 'Pizza', price: 121 },
+      { name: 'Sushi', price: 121 },
+    ];
+
+    const app = document.getElementById('app');
+    products.forEach(product => {
+      app.innerHTML += `<li> ${product.name} - $${product.price} </li>`;
+    });
+
+    const tasks = [
+      { title: 'Task No.1', description: 'Description No.1', completed: false },
+      { title: 'Task No.2', description: 'Description No.2', completed: true },
+      { title: 'Task No.3', description: 'Description No.3', completed: false },
+      { title: 'Task No.4', description: 'Description No.4', completed: true },
+      { title: 'Task No.5', description: 'Description No.5', completed: true },
+    ];
+    const tasksApp = document.getElementById('tasks');
+    tasksApp.innerHTML = '<h1> Task List </h1> <br />';
+
+    tasks.forEach(({ title, description, completed }) => {
+      const taskElement = `
+        <li>
+          <input type="checkbox" name="completed" ${completed ? 'checked' : ''} >
+          <p> title </p>
+          <textarea name="" id="" cols="30" rows="5">${description}</textarea>
+        </li>
+      `;
+      tasksApp.innerHTML += taskElement;
+    });
+    
+  </script>
+</body>
+</html>
