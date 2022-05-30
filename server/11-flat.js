@@ -27,3 +27,58 @@ const arrayFlat = matriz.flat();
 console.log("🚀 ~ arrayFlat", arrayFlat);
 
 // NOTA: Generar función que simule a flat().
+
+// flatMap(): Es la combinación de las funciones flat() y map(). Este metodo solo funciona en arrays de un solo nivel
+
+const users = [
+  { userId: 1, username: "Tom", attributes: ["Nice", "Cute"]},
+  { userId: 2, username: "Mike", attributes: ["Lovely"]},
+  { userId: 3, username: "Nico", attributes: ["Nice", "Cool"]},
+];
+
+// Aplanar el array de objetos por sus attributes
+
+// mat-flat
+const result = users.map(user => user.attributes).flat();
+console.log("🚀 mat- flat ~ ", result);
+
+// flatMap():
+const resultFM = users.flatMap(user => user.attributes);
+console.log("🚀 flatMap ~ ", resultFM);
+
+
+// Regresar en un solo arreglo startDate
+const calendars = {
+  primaryCalendar: [
+    {
+      startDate: new Date(2021, 1, 1, 15),
+      endDate: new Date(2021, 1, 1, 15, 30),
+      title: "Cita 1",
+    },
+    {
+      startDate: new Date(2021, 1, 1, 17),
+      endDate: new Date(2021, 1, 1, 18),
+      title: "Cita 2",
+    },
+  ],
+  secondaryCalendar: [
+    {
+      startDate: new Date(2021, 1, 1, 12),
+      endDate: new Date(2021, 1, 1, 12, 30),
+      title: "Cita 2",
+    },
+    {
+      startDate: new Date(2021, 1, 1, 9),
+      endDate: new Date(2021, 1, 1, 10),
+      title: "Cita 4",
+    },
+  ],
+};
+
+// Solución:
+const startDates = [];
+Object.keys(calendars).forEach(key => {
+  const dates = calendars[key].flatMap(calendar => calendar.startDate);
+  startDates.push(...dates);
+});
+console.log("🚀 ~ startDates", startDates);
